@@ -32,34 +32,35 @@ $(document).ready(function () {
             mynews();
         }
     });
+
     $("h2").click(async function (e) {
         e.preventDefault();
         let url `https://apithree-ochre.vercel.app/api/news`;
-        async function mynews() {
-            let responce = await fetch(url);
-            let data = await responce.json();
-            console.log(data);
-            if (Array.isArray(data.news)) {
-                data.news.forEach(item => {
-                    const box = document.createElemet('div');
-                    box.className = 'col-md-4';
-                    box.innerHTML = `
-                            <div class="box">
-                                <div class="imgbox">
-                                    <img src="${item.img}" alt="">
+            async function mynews() {
+                let responce = await fetch(url);
+                let data = await responce.json();
+                    console.log(data);
+                if (Array.isArray(data.news)) {
+                    data.news.forEach(item => {
+                        const box = document.createElemet('div');
+                        box.className = 'col-md-4';
+                        box.innerHTML = `
+                                <div class="box">
+                                    <div class="imgbox">
+                                        <img src="${item.img}" alt="">
+                                    </div>
+                                    <h1>${item.tit}</h1>
+                                    <h4>${item.des}</h4>
+                                    <div class="infobox">
+                                        <div class="lbtn">Good</div>
+                                        <div class="dbtn">Bad</div>
+                                    </div>
                                 </div>
-                                <h1>${item.tit}</h1>
-                                <h4>${item.des}</h4>
-                                <div class="infobox">
-                                    <div class="lbtn">Good</div>
-                                    <div class="dbtn">Bad</div>
-                                </div>
-                            </div>
-                        `;
-                    $(".row").append(box);
-                });
+                            `;
+                        $(".row").append(box);
+                    });
+                }
             }
-        }
-        mynews();
+            mynews();
     });
 });
