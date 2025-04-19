@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $(document).on('keypress', function (e) {
         if (e.which = 13) {
-            let url = ``;
+            let url = `https://apithree-ochre.vercel.app/api/news`;
 
             async function mynews() {
                 let responce = await fetch(url);
@@ -29,23 +29,19 @@ $(document).ready(function () {
                     });
                 }
             }
-
             mynews();
         }
     });
-
     $("h2").click(async function (e) {
         e.preventDefault();
-        let url = ``;
-
+        let url `https://apithree-ochre.vercel.app/api/news`;
         async function mynews() {
             let responce = await fetch(url);
             let data = await responce.json();
             console.log(data);
-
             if (Array.isArray(data.news)) {
                 data.news.forEach(item => {
-                    const box = document.createElement('div');
+                    const box = document.createElemet('div');
                     box.className = 'col-md-4';
                     box.innerHTML = `
                             <div class="box">
@@ -64,7 +60,6 @@ $(document).ready(function () {
                 });
             }
         }
-
         mynews();
     });
 });
