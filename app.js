@@ -36,15 +36,15 @@ $(document).ready(function () {
     $("h2").click(async function (e) {
         e.preventDefault();
         let url `https://apithree-ochre.vercel.app/api/news`;
-            async function mynews() {
-                let responce = await fetch(url);
-                let data = await responce.json();
-                    console.log(data);
-                if (Array.isArray(data.news)) {
-                    data.news.forEach(item => {
-                        const box = document.createElemet('div');
-                        box.className = 'col-md-4';
-                        box.innerHTML = `
+        async function mynews() {
+            let responce = await fetch(url);
+            let data = await responce.json();
+            console.log(data);
+            if (Array.isArray(data.news)) {
+                data.news.forEach(item => {
+                    const box = document.createElemet('div');
+                    box.className = 'col-md-4';
+                    box.innerHTML = `
                                 <div class="box">
                                     <div class="imgbox">
                                         <img src="${item.img}" alt="">
@@ -57,10 +57,10 @@ $(document).ready(function () {
                                     </div>
                                 </div>
                             `;
-                        $(".row").append(box);
-                    });
-                }
+                    $(".row").append(box);
+                });
             }
-            mynews();
+        }
+        mynews();
     });
 });
